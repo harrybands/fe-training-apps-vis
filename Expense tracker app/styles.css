@@ -17,9 +17,17 @@ body {
         max-width: 800px;
     }
 
-    h1,h2 {
+    
+    h1 {
     display: flex;
     color: #1a73e8;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    }
+
+    h2 {
+    display: flex;
+    color: #333;
     margin-bottom: 1.5rem;
     justify-content: center;
     }
@@ -30,7 +38,7 @@ body {
         margin-bottom: 5%;
     }
 
-    #input {
+    .input {
         /* flex: 5; */
         display: flex;
         margin-bottom: 1.5rem;
@@ -42,7 +50,7 @@ body {
         font-size: 14px;
         width: 50%;
     }
-    #input:focus {
+    .input:focus {
         border-color: #1a73e8;
     }
 
@@ -50,21 +58,35 @@ body {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 20px;
-        border-radius: 10px;
     }
 
     th {
         padding: 15px;
         border-bottom: 1px solid #ddd;
-    }
-
-    th {
         background-color: #1a73e8;
-        color: #000000;
+        color: #333;
     }
 
 td {
     color: #333;
+}
+
+.summary-container {
+    background-color: #1a73e8;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 1%;
+}
+
+.summary p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.summary span {
+    font-weight: bold;
 }
 
         button {

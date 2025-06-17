@@ -13,37 +13,37 @@
     <h2>Tiền vào</h2>
     <div class="income-and-expenditure">
         <label for="income-description">Mô tả</label>
-        <input type="text" id="input" placeholder="e.g. Salary">
+        <input type="text" id="income-description" class="input" placeholder="e.g. Tiền lương">
     </div>
     <div class="income-and-expenditure">
-        <label for="income-amount">Thu nhập</label>
-        <input type="number" id="input" placeholder="e.g. 100000">
+        <label for="income-amount">Thu nhập (VND)</label>
+        <input style="margin-bottom: 1%" type="number" id="income-amount" class="input" placeholder="e.g. 5000000">
     </div>
-    <button id="add-income">Thêm</button>
+     <span id="income-error" style="color: red; margin-left: 10px; font-size: small;"></span>
+    <button onclick="addIncome()" id="add-income">Thêm</button>
 </div>
 
 <div class="income-and-expenditure-section">
     <h2>Tiền ra</h2>
     <div class="income-and-expenditure">
         <label for="expense-description">Mô tả</label>
-        <input type="text" id="input" placeholder="e.g. Rent">
+        <input type="text" class="input" placeholder="e.g. Tiền nhà">
     </div>
     <div class="income-and-expenditure">
-        <label for="expense-amount">Chi tiêu</label>
-        <input type="number" id="input" placeholder="e.g. 50000">
+        <label for="expense-amount">Chi tiêu (VND)</label>
+        <input type="number" class="input" placeholder="e.g. 5000000">
     </div>
-    <button id="add-expense">Thêm</button>
+    <button onclick="addExpense()" id="add-expense">Thêm</button>
 </div>
 
  <div class="table-container">
     <h2>Lịch sử giao dịch</h2>
-    <table>
+    <table style="width:100%" id="transaction-table">
         <thead>
             <tr>
-                <th>Mô tả</th>
-                <th>Thu/Chi </th>
-                <th>Số dư</th>
-                <th>Hành động</th>
+                <th style="width:40%">Mô tả</th>
+                <th style="width:40%">Thu/Chi </th>
+                <th style="width:20%">Hành động</th>
             </tr>
         </thead>
         <tbody id="transaction-history">
@@ -54,18 +54,25 @@
 
 <div class="summary">
     <h2>Tổng kết</h2>
-    <div class="summary-item">
-        <span>Tổng thu nhập:</span>
-        <span id="total-income">0</span>
+    <div class="summary-container">
+        <div class="summary-item">
+            <span>Tổng thu nhập (VND):</span>
+            <span id="total-income"></span>
+        </div>
+        <div class="summary-item">
+            <span>Tổng chi tiêu (VND):</span>
+            <span id="total-expense"></span>
+        </div>
+        <div class="summary-item">
+            <span>Số dư (VND):</span>
+            <span id="balance"></span>
+        </div>
     </div>
-    <div class="summary-item">
-        <span>Tổng chi tiêu:</span>
-        <span id="total-expense">0</span>
-    </div>
-    <div class="summary-item">
-        <span>Số dư:</span>
-        <span id="balance">0</span>
-    </div>
+</div>
     <button id="reset">Đặt lại</button>
+    <script src="main.js" ></script>
+    <script src="functional buttons/addIncome.js"></script>
+    <script src="functional buttons/addExpense.js"></script>
+    <script src="functional buttons/resetAll.js"></script>
 </body>
 </html>

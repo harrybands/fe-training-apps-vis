@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="weather-container">
+        <h1> Ứng dụng dự báo thời tiết </h1>
+        <div class="input-section">
+            <input type="text" id="city" placeholder="Điền tên thành phố">
+            <button onclick="getWeather()"> Tìm kiếm </button>
+        </div>
+        <span id="error" style="color: red; margin-left: 10px; font-size: small;"></span>
+
+        <div class="current-container">
+            <img id="weather-icon" alt="Weather Icon">
+            <span id="temp-div"></span>
+            <span id="weather-info"></span>
+        </div>
+
+        <!-- <div id="temp-div"></div>
+        <div id="weather-info"></div> -->
+        <ul id="hourly-forecast"></ul>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

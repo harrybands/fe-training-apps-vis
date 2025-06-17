@@ -1,14 +1,14 @@
 # fe-training-apps-vis
 
-Sử dụng HTML, CSS, và JavaScript để hoàn thành các app. 
+Sử dụng **HTML**, **CSS**, và **JavaScript** để hoàn thành các ứng dụng.
 
-Các app được locate ở các nhánh khác nhau trong tệp: 
+Các ứng dụng được đặt ở các nhánh khác nhau trong repository.
 
-Danh sách ứng dụng: 
+## Danh sách ứng dụng
 
-Ứng dụng 1: Danh sách việc cần làm
-Ứng dụng 2: Đồng hồ bấm giờ 
-Ứng dụng 3: Dự báo thời tiết (Đang làm)
-Ứng dụng 4: Quản lý chi tiêu (Đang làm)
-Ứng dụng 5: Quản lý đặt vé (Chưa làm) 
-Ứng dụng 6: Tạo mã QR (Chưa làm)
+- **Ứng dụng 1:** Danh sách việc cần làm  
+- **Ứng dụng 2:** Đồng hồ bấm giờ  
+- **Ứng dụng 3:** Dự báo thời tiết _(Đang làm)_  
+- **Ứng dụng 4:** Quản lý chi tiêu _(Đang làm)_  
+- **Ứng dụng 5:** Quản lý đặt vé _(Chưa làm)_  
+- **Ứng dụng 6:** Tạo mã QR _(Chưa làm)_

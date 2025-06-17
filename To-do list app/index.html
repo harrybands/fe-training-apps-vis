@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="Nhập task của bạn" autofocus>
+            <button onclick="addTask()">Thêm task</button>
+            <button onclick="deleteAll()">Xóa tất cả! </button>
+        </div>
+            <span id="taskError" style="color: red; margin-left: 10px; font-size: small;"></span>
+        <ul id="taskList"></ul>
+    </div>
+
+        <script src="main.js"></script>
+        <script src="functional buttons/addTask.js"></script>
+        <script src="functional buttons/deleteTask.js"></script>
+</body>
+</html>

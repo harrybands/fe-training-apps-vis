@@ -14,7 +14,7 @@ function addExpense() {
     return;
   }
 
-  if (expenseVal <= 0) {
+  if (expenseVal <= 0 || isNaN(expenseVal)) {
     if (errorMsg) {
       errorMsg.textContent = "Vui lòng nhập số tiền hợp lệ.";
       errorMsg.style.display = "block";

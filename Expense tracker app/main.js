@@ -1,3 +1,5 @@
+let editingIndex = null;
+
 function loadItems() {
     return JSON.parse(localStorage.getItem("items")) || [];
   }
@@ -22,7 +24,10 @@ function renderTableAndSummary() {
   
     descCell.textContent = item.description;
     amountCell.textContent = (item.type === "income" ? "+" : "-") + parseInt(item.amount).toLocaleString();
-    actionCell.innerHTML = `<button onclick="deleteItem(${index})">Xóa</button>`;
+    actionCell.innerHTML = `
+    <button class="edit-btn" onclick="editItem(${index})">Sửa</button>
+    <button onclick="deleteItem(${index})">Xóa</button>
+  `;
   
     row.appendChild(descCell);
     row.appendChild(amountCell);
@@ -48,11 +53,45 @@ function renderTableAndSummary() {
     saveItems(items);
     renderTableAndSummary();
   }
+
+  function editItem(index) {
+    const items = loadItems();
+    const item = items[index];
+    editingIndex = index;
+  
+    document.getElementById("edit-description").value = item.description;
+    document.getElementById("edit-amount").value = item.amount;
+  
+    document.getElementById("edit-modal").style.display = "flex";
+  }
+
+  function saveEdit() {
+    const descEdit = document.getElementById("edit-description").value.trim();
+    const amountEdit = document.getElementById("edit-amount").value.trim();
+    const errorMsg = document.getElementById("edit-error");
+  
+    if (!descEdit || !amountEdit || isNaN(amountEdit) || amountEdit <= 0) {
+        errorMsg.textContent = "Vui lòng nhập thông tin hợp lệ.";
+        errorMsg.style.display = "block";
+        return;
+    }
+
+    errorMsg.style.display = "none";
+  
+    const items = loadItems();
+    items[editingIndex].description = descEdit;
+    items[editingIndex].amount = amountEdit;
+  
+    saveItems(items);
+    renderTableAndSummary();
+    closeModal();
+  }
+
+  function closeModal() {
+    document.getElementById("edit-modal").style.display = "none";
+    editingIndex = null;
+  }
   
   document.addEventListener("DOMContentLoaded", () => {
     renderTableAndSummary();
-    const resetButton = document.getElementById("reset");
-    if (resetButton) {
-      resetButton.addEventListener("click", resetAll);
-    }
   });

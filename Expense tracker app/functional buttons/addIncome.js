@@ -13,7 +13,7 @@ function addIncome() {
     return;
   }
 
-  if (incomeVal <= 0) {
+  if (incomeVal <= 0 || isNaN(incomeVal)) {
     if (errorMsg) {
       errorMsg.textContent = "Vui lòng điền số tiền hợp lệ.";
       errorMsg.style.display = "block";

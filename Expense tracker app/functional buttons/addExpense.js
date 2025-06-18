@@ -1,28 +1,41 @@
-  function addData() {
-    const table = document.getElementById('transaction-table').querySelector('tbody');
-    const newRow = table.insertRow();
-    const cell1 = newRow.insertCell();
-    const cell2 = newRow.insertCell();
-    cell1.innerHTML = 'John Doe';
-    cell2.innerHTML = '30';
-  }
+function addExpense() {
+  const description = document.getElementById("expense-description");
+  const expense = document.getElementById("expense-amount");
+  const errorMsg = document.getElementById("expense-error");
 
-  function addExpense() {
-    const expense = document.getElementById("expense-input").value.trim();
-    const amount = document.getElementById("amount-input").value.trim();
-    const category = document.getElementById("category-input").value.trim();
-    const errorMsg = document.getElementById("expenseError");
+  const expenseDescriptionVal = description.value.trim();
+  const expenseVal = expense.value.trim();
 
-    if (!expense || !amount || !category) {
-      if (errorMsg) {
-        errorMsg.textContent = "điền đê.";
-        errorMsg.style.display = "block";
-      }
-      return;
+  if (!expenseVal || !expenseDescriptionVal) {
+    if (errorMsg) {
+      errorMsg.textContent = "Vui lòng điền đầy đủ thông tin.";
+      errorMsg.style.display = "block";
     }
-    
-    // Clear input fields
-    document.getElementById("expense-input").value = "";
-    document.getElementById("amount-input").value = "";
-    document.getElementById("category-input").value = "";
+    return;
   }
+
+  if (expenseVal <= 0) {
+    if (errorMsg) {
+      errorMsg.textContent = "Vui lòng nhập số tiền hợp lệ.";
+      errorMsg.style.display = "block";
+    }
+    return;
+  }
+
+  if (errorMsg) errorMsg.style.display = "none";
+
+  const newItem = {
+    amount: expenseVal,
+    description: expenseDescriptionVal,
+    type: "expense",
+  };
+
+  const items = loadItems();
+  items.push(newItem);
+  saveItems(items);
+
+  description.value = "";
+  expense.value = "";
+
+  renderTableAndSummary();
+}

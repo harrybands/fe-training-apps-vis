@@ -1,15 +1,16 @@
-function getWeather() {
+
+    function getWeather() {
+
+    const errorMsg = document.getElementById('error');
     const apiKey = "fbfd4d9482d96e51bd8fa8ad108c2cc1";
     const citySearch = document.getElementById('city');
-    const cityText = citySearch.value.trim();
-    const errorMsg = document.getElementById('error');
+    let cityText = citySearch.value.trim();
     const urlGetCurrentWeatherInfo =`https://api.openweathermap.org/data/2.5/weather?q=${cityText}&appid=${apiKey}`;
     const urlGetForecastWeatherInfo = `https://api.openweathermap.org/data/2.5/forecast?q=${cityText}&appid=${apiKey}`;
 
     console.log(citySearch);
 
     if (!cityText) {
-        console.log('errorMsg attr thi rang: ', errorMsg);
         if (errorMsg) {
             errorMsg.textContent = 'Vui lòng nhập thành phố bạn muốn'
             errorMsg.style.display = 'block';
@@ -27,6 +28,8 @@ function getWeather() {
                             .catch(error => {
                                 console.error('error while fetching: ', error);
                                 errorMsg.textContent ='Lỗi xảy ra khi lấy nhiệt độ hiện tại, vui lòng thử nhập lại.'
+                                errorMsg.style.display = 'block';
+                                return;
                             })
     fetch(urlGetForecastWeatherInfo).then(response => response.json())
         .then(data => {
@@ -35,6 +38,8 @@ function getWeather() {
         .catch(error => {
             console.error('Error fetching hourly forecast data:', error);
             errorMsg.textContent ='Lỗi xảy ra khi lấy nhiệt độ tương lai, vui lòng thử nhập lại.'
+            errorMsg.style.display = 'block';
+            return;
         });
 }
 
@@ -49,7 +54,11 @@ function displayWeather(data) {
     hourlyForecast.innerHTML = '';
 
     if (data.cod === '404') {
-        weatherInfo.innerHTML = `<p>${data.message}</p>`;
+        // weatherInfo.innerHTML = `<p>${data.message}</p>`;
+        console.log("data.message: ", data.message);
+        errorMsg.textContent = `${data.message}`;
+        errorMsg.style.display = 'block';
+        return;
     }
     else {
         const cityName = data.name;
@@ -73,6 +82,8 @@ function displayWeather(data) {
         weatherInfo.innerHTML = weatherHtml;
         weatherIcon.src = iconUrl;
         weatherIcon.alt = description;
+        weatherIcon.style.display = 'block';
+        weatherIcon.style.placeSelf = 'center';
 
     }
 

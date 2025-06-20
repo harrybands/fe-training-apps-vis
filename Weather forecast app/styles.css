@@ -8,6 +8,7 @@ body {
     margin: 0;
     max-height: 100%;
     overflow: auto;
+    margin: 25px 25px;
     }
     
     .weather-container {
@@ -43,9 +44,9 @@ body {
         border-color: #1a73e8;
     }
 
-    .weather-icon {
+    /* .weather-icon {
         align-self: center;
-    }
+    } */
     .current-container {
         text-align: center;
     }

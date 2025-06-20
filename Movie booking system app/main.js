@@ -1,10 +1,11 @@
-   const seatsContainer = document.getElementById('seats');
+    const seatsContainer = document.getElementById('seats');
     const ticketList = document.getElementById('ticketList');
     const bookBtn = document.getElementById('bookBtn');
 
     let selectedSeats = [];
     const totalSeats = 40;
 
+    // Hiển thị danh sách ghế và xử lý chọn ghế
     function renderSeats() {
       seatsContainer.innerHTML = '';
       selectedSeats = [];
@@ -32,16 +33,19 @@
       highlightBookedSeats();
     }
 
+    // Lấy danh sách vé đã đặt từ sessionStorage
     function getBookings() {
-      return JSON.parse(localStorage.getItem('movieTickets') || '[]');
+      return JSON.parse(sessionStorage.getItem('movieTickets') || '[]');
     }
 
+    // Lưu vé mới vào sessionStorage
     function saveBooking(bookings) {
       const existing = getBookings();
       const updated = existing.concat(bookings);
-      localStorage.setItem('movieTickets', JSON.stringify(updated));
+      sessionStorage.setItem('movieTickets', JSON.stringify(updated));
     }
 
+    // Đánh dấu các ghế đã được đặt
     function highlightBookedSeats() {
       const bookings = getBookings();
       const movie = document.getElementById('movie').value;
@@ -58,16 +62,24 @@
       });
     }
 
+    // Hiển thị danh sách vé đã đặt ra giao diện
     function renderBookings() {
       const bookings = getBookings();
       ticketList.innerHTML = '';
       bookings.forEach(b => {
         const li = document.createElement('li');
-        li.textContent = `${b.name} - Phim: ${b.movie} - Ghế: ${b.seat} - Lúc: ${b.time}`;
-        ticketList.appendChild(li);
+        
+        const movieNames = {
+          'bong-dung-muon-khoc': 'Bỗng dưng muốn khóc',
+          'the-office': 'The Office',
+          'modern-family': 'Modern Family',
+        };
+        const movieDisplay = movieNames[b.movie] || b.movie;
+        li.textContent = `${b.name} - Phim: ${movieDisplay} - Ghế: ${b.seat} - Lúc: ${b.time}`;   ticketList.appendChild(li);
       });
     }
 
+    // Xử lý sự kiện khi bấm nút đặt vé
     bookBtn.addEventListener('click', () => {
       const name = document.getElementById('username').value.trim();
       const email = document.getElementById('useremail').value.trim();
@@ -75,7 +87,7 @@
       const time = document.getElementById('time').value;
 
       if (!name || !email || selectedSeats.length === 0) {
-        alert('Nhập đủ thông tin và chọn ít nhất 1 ghế nha bro!');
+        alert('Vui lòng nhập đủ thông tin và chọn ít nhất một ghế!');
         return;
       }
 
@@ -94,6 +106,7 @@
       renderBookings();
     });
 
+    // Khi đổi phim hoặc giờ chiếu thì render lại ghế
     document.getElementById('movie').addEventListener('change', renderSeats);
     document.getElementById('time').addEventListener('change', renderSeats);
 

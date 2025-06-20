@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 Đặt Vé Xem Phim (Nhiều ghế)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Đặt Vé Xem Phim</h1>
+
+  <div class="form-section">
+    <label>
+  <img alt="https://cdn-icons-png.flaticon.com/512/3534/3534033.png" width="20" style="vertical-align: middle;">
+  Chọn phim:
+</label>
+    <select id="movie">
+      <option value="bong-dung-muon-khoc">Bỗng dưng muốn khóc</option>
+      <option value="modern-family">Modern Family</option>
+      <option value="the-office"> The Office </option>
+    </select>
+
+    <label>Suất chiếu:</label>
+    <select id="time">
+      <option value="14:00">14:00</option>
+      <option value="17:30">17:30</option>
+      <option value="20:00">20:00</option>
+    </select>
+  </div>
+
+  <div class="seats-section">
+    <h2>Chọn Ghế</h2>
+    <div id="seats"></div>
+  </div>
+
+  <div class="form-section">
+    <input type="text" id="username" placeholder="Họ tên">
+    <input type="email" id="useremail" placeholder="Email">
+    <button id="bookBtn">Đặt vé</button>
+  </div>
+
+  <h2>Danh sách vé đã đặt</h2>
+  <ul id="ticketList"></ul>
+
+ <script src="main.js" ></script>
+</body>
+</html>
